@@ -1,0 +1,29 @@
+{
+    "users":[
+        {
+            "email":"gonzalo.molina@darwoft.com",
+            "password":"Maestruli10"
+
+        },
+        {
+            "email":"gonza_mol@hotmail.com",
+            "password":"Maestruli10"
+
+        },
+        {
+            "email":"Lorena.Molina@hotmail.com",
+            "password":"Maestruli10"
+
+        },
+        {
+            "email":"Laura.Molina@hotmail.com",
+            "password":"Maestruli10"
+
+        },
+        {
+            "email":"Nielse.Molina@hotmail.com",
+            "password":"Maestruli10"
+
+        }
+    ]
+}
