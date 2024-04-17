@@ -17,11 +17,11 @@ def test_setup(request):
     browser = request.config.getoption("--browser")
     if browser == 'chrome':
         # driver = webdriver.Chrome("C:\\Users\\User\\Downloads\\chromedriver-win32\\chromedriver.exe")
-        service_obj = Service("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\chromedriver.exe")
+        service_obj = Service("C:\\Users\\User\\PycharmProjects\\NewAutomationPractice1\\Drivers\\chromedriver.exe")
         driver = webdriver.Chrome(service=service_obj)
     elif browser == 'firefox':
         # driver = webdriver.Firefox("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\geckodriver.exe")
-        service_obj = Service("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\geckodriver.exe")
+        service_obj = Service("C:\\Users\\User\\PycharmProjects\\NewAutomationPractice1\\Drivers\\geckodriver.exe")
         driver = webdriver.Firefox(service=service_obj)
     warnings.simplefilter('ignore', ResourceWarning)
     #driver = webdriver.Chrome("C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Drivers\\chromedriver.exe")
@@ -32,8 +32,6 @@ def test_setup(request):
     yield
     driver.close()
     driver.quit()
-
-
 
 
 @pytest.mark.hookwrapper
