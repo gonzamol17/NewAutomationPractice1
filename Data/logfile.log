@@ -1,2 +1,22 @@
 
 2022-04-20 15:19:07,008 :INFO : test_Verify_ShowsCategory_WomenOptions :Se ingresa email y password
+2024-04-15 15:46:02,683 :INFO : test_Load_Products_Cart :Se ingresa email y password
+2024-04-15 15:47:49,666 :INFO : test_Load_Products_Cart :Se ingresa email y password
+2024-04-15 15:54:41,668 :INFO : test_Clean_Cart :Se ingresa email y password
+2024-04-15 15:56:00,586 :INFO : test_Clean_Cart :Se ingresa email y password
+2024-04-15 17:06:12,599 :INFO : test_Clean_Cart :Se ingresa email y password
+2024-04-15 17:29:59,044 :INFO : test_Login_Success :Se hace click en link signIn
+2024-04-15 17:30:31,380 :INFO : test_Login_Success :Se hace click en link signIn
+2024-04-15 17:30:35,957 :INFO : test_Login_Success :Se ingresa email y password
+2024-04-15 17:30:39,450 :INFO : test_Login_Success :El usuario está logueado
+2024-04-17 08:05:59,036 :INFO : test_Price_And_Product :Se ingresa email y password
+2024-04-17 08:08:39,333 :INFO : test_Price_And_Product :Se ingresa email y password
+2024-04-17 08:20:26,976 :INFO : test_Verify_Read_Information_From_Excel :Se hace click en link signIn
+2024-04-17 08:20:32,615 :INFO : test_Verify_Read_Information_From_Excel :Se ingresa email y password
+2024-04-17 08:20:39,471 :INFO : test_Verify_Read_Information_From_Excel :El usuario está logueado
+2024-04-17 08:21:30,274 :INFO : test_Verify_Read_Information_From_Excel :Se hace click en link signIn
+2024-04-17 08:21:36,945 :INFO : test_Verify_Read_Information_From_Excel :Se ingresa email y password
+2024-04-17 08:21:43,208 :INFO : test_Verify_Read_Information_From_Excel :El usuario está logueado
+2024-04-17 08:27:41,697 :INFO : test_Verify_ShowsCategory_WomenOptions :Se ingresa email y password
+2024-04-17 08:30:45,004 :INFO : test_Subscription_Success :Se pudo enviar la subscripción exitosamente
+2024-04-17 08:32:10,679 :INFO : test_Write_Your_Review :Se ingresa email y password

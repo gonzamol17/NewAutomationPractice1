@@ -13,7 +13,7 @@ from POM.HomePage import HomePage
 
 from Utils.BaseClass import BaseClass
 
-@pytest.mark.usefixtures("test_setup")
+
 class TestContactUsForm(BaseClass):
 
     def test_ContactUs_Form(self):

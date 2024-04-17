@@ -10,13 +10,12 @@ from POM.ProductsPage import ProductsPage
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
 import json
 from colorama import Fore, Back, Style
-import HtmlTestRunner
 from Utils import utils as utils
 from POM.HomePage import HomePage
 from POM.LoginPage import LoginPage
 from Utils.BaseClass import BaseClass
 
-@pytest.mark.usefixtures("test_setup")
+
 class TestSearch_Products(BaseClass):
 
     def test_Search_Products(self):
@@ -28,11 +27,12 @@ class TestSearch_Products(BaseClass):
         lp = LoginPage(driver)
         lp.do_Login("gonzalo.molina@darwoft.com", "Maestruli10")
         hp.select_Products()
-        hp.selectSearchBox("pepito")
+        product = "Unicorn Print"
+        hp.selectSearchBox(product)
         try:
             self.driver.execute_script("window.scrollTo(0, 400)")
             pp = ProductsPage(driver)
-            assert "Unicorn Print" in pp.verifyUnicornprintProduct()
+            assert product in pp.verifyUnicornprintProduct()
             print(Fore.GREEN+"Se ha encontrado el producto buscado que es "+pp.verifyUnicornprintProduct()+Fore.RESET)
             time.sleep(2)
         except:

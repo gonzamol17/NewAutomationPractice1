@@ -9,7 +9,6 @@ from POM.ConfirmationPage import ConfirmationPage
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
 import json
 from colorama import Fore, Back, Style
-import HtmlTestRunner
 from Utils import utils as utils
 from POM.HomePage import HomePage
 from POM.LoginPage import LoginPage
@@ -21,7 +20,6 @@ from POM.CheckoutPage import CheckoutPage
 from POM.PaymentPage import PaymentPage
 
 
-@pytest.mark.usefixtures("test_setup")
 class TestShowsCategoryWomenOption(BaseClass):
 
     def test_Verify_ShowsCategory_WomenOptions(self):

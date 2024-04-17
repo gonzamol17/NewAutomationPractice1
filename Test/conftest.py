@@ -4,6 +4,7 @@ import json
 import pytest
 from Utils import utils as utils
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.service import Service
 driver = None
 
 def pytest_addoption(parser):
@@ -15,9 +16,13 @@ def test_setup(request):
     from selenium import webdriver
     browser = request.config.getoption("--browser")
     if browser == 'chrome':
-        driver = webdriver.Chrome("C:\\Users\\admin\\PycharmProjects\\NewAutomationPractice1\\Drivers\\chromedriver.exe")
+        # driver = webdriver.Chrome("C:\\Users\\User\\Downloads\\chromedriver-win32\\chromedriver.exe")
+        service_obj = Service("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\chromedriver.exe")
+        driver = webdriver.Chrome(service=service_obj)
     elif browser == 'firefox':
-        driver = webdriver.Firefox("C:\\Users\\admin\\PycharmProjects\\NewAutomationPractice1\\Drivers\\geckodriver.exe")
+        # driver = webdriver.Firefox("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\geckodriver.exe")
+        service_obj = Service("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\geckodriver.exe")
+        driver = webdriver.Firefox(service=service_obj)
     warnings.simplefilter('ignore', ResourceWarning)
     #driver = webdriver.Chrome("C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Drivers\\chromedriver.exe")
     driver.implicitly_wait(10)
@@ -56,4 +61,4 @@ def pytest_runtest_makereport(item):
 
 def _capture_screenshot(name):
     #driver.get_screenshot_as_file(name)
-    driver.get_screenshot_as_file("C:\\Users\\admin\\PycharmProjects\\NewAutomationPractice\\Test\\ScreenShots\\"+name)
+    driver.get_screenshot_as_file("C:\\Users\\User\\PycharmProjects\\NewAutomationPractice1\\Test\\ScreenShots\\"+name)

@@ -10,17 +10,17 @@ from selenium.webdriver.support import expected_conditions
 
 from POM.PoloProductsPage import PoloProductsPage
 from POM.ProductsPage import ProductsPage
+from Utils.BaseClass import BaseClass
 
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
 import json
 from colorama import Fore, Back, Style
-import HtmlTestRunner
 from Utils import utils as utils
 from POM.HomePage import HomePage
 from POM.LoginPage import LoginPage
 
-@pytest.mark.usefixtures("test_setup")
-class TestQuantityPoloProducts:
+
+class TestQuantityPoloProducts(BaseClass):
 
     def test_Quantity_Polo_Products(self):
         driver = self.driver

@@ -9,7 +9,6 @@ from POM.ConfirmationPage import ConfirmationPage
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
 import json
 from colorama import Fore, Back, Style
-import HtmlTestRunner
 from Utils import utils as utils
 from POM.HomePage import HomePage
 from POM.LoginPage import LoginPage
@@ -21,7 +20,6 @@ from POM.CheckoutPage import CheckoutPage
 from POM.PaymentPage import PaymentPage
 
 
-@pytest.mark.usefixtures("test_setup")
 class TestSelectProductWithLoggin(BaseClass):
 
     def test_Select_Product_Without_Loggin(self):
@@ -44,6 +42,7 @@ class TestSelectProductWithLoggin(BaseClass):
             assert "Cart is empty!" == cp.getLeyendEmptyCart()
             print(Fore.GREEN + "El carrito de compras está limpio de productos")
 
+        time.sleep(2)
         hp.select_Logout()
         hp.select_Products()
         print("Realizar una selección de un producto sin estar logueado")

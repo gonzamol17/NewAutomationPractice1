@@ -8,16 +8,17 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
+from Utils.BaseClass import BaseClass
+
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
 import json
 from colorama import Fore, Back, Style
-import HtmlTestRunner
 from Utils import utils as utils
 from POM.HomePage import HomePage
 from POM.LoginPage import LoginPage
 
-@pytest.mark.usefixtures("test_setup")
-class TestLoginFailed:
+
+class TestLoginFailed(BaseClass):
 
     def test_Login_Failed(self):
         driver = self.driver

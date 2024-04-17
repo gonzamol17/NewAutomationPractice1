@@ -11,13 +11,12 @@ sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
 import json
 import openpyxl
 from colorama import Fore, Back, Style
-import HtmlTestRunner
 from Utils import utils as utils
 from POM.HomePage import HomePage
 from POM.LoginPage import LoginPage
 from Utils.BaseClass import BaseClass
 
-@pytest.mark.usefixtures("test_setup")
+
 class TestReadInformationFromExcel(BaseClass):
 
     def test_Verify_Read_Information_From_Excel(self, getData2):
@@ -43,9 +42,6 @@ class TestReadInformationFromExcel(BaseClass):
         assert "Logged in as" in hp.verify_Logged()
         log.info("El usuario está logueado")
         time.sleep(3)
-
-
-
 
     @pytest.fixture(params=DataLoginUser.getTestData("User1"))
     def getData2(self, request):

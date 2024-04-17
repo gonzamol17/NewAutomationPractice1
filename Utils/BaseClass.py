@@ -8,13 +8,13 @@ import logging
 #ver si en esta clase base esta anotación de pytest.mark va también, porque ya la estamos usando en la clase
 # que contiene el test. Por lo tanto dentro de la clase del Test, lo único que hay que hacer es llamar
 # a esta clase base, para que pueda usar estos métodos heredados
-#@pytest.mark.usefixtures("test_setup")
+@pytest.mark.usefixtures("test_setup")
 class BaseClass:
 
     def get_Logger(self):
         loggername = inspect.stack()[1][3]
         logger = logging.getLogger(loggername)
-        fileHandler = logging.FileHandler("C:\\Users\\admin\\PycharmProjects\\NewAutomationPractice1\\Data\\logfile.log")
+        fileHandler = logging.FileHandler("C:\\Users\\User\\PycharmProjects\\NewAutomationPractice1\\Data\\logfile.log")
         formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s :%(message)s")
         fileHandler.setFormatter(formatter)
         logger.addHandler(fileHandler)

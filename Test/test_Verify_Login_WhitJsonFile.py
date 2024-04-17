@@ -6,23 +6,22 @@ import os
 
 from POM.HomePage import HomePage
 from POM.LoginPage import LoginPage
+from Utils.BaseClass import BaseClass
 
 sys.path.append(os.path.join(os.path.dirname(__file__),"..",".."))
 import json
 from colorama import Fore, Back, Style
-import HtmlTestRunner
 from Utils import utils as utils
 
 
-@pytest.mark.usefixtures("test_setup")
-class TestLoginSuccessWithJson:
+class TestLoginSuccessWithJson(BaseClass):
 
     def test_LoginSuccessWithJson(self):
         driver = self.driver
         hp = HomePage(driver)
         hp.select_SignIn()
         lp = LoginPage(driver)
-        file = open("C:\\Users\\admin\\PycharmProjects\\NewAutomationPractice\\Data\\Login.json", "r")
+        file = open("C:\\Users\\User\\PycharmProjects\\NewAutomationPractice1\\Data\\Login.json", "r")
         jsondata = file.read()
         obj = json.loads(jsondata)
         list = obj['users']
