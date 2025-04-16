@@ -16,15 +16,15 @@ def test_setup(request):
     from selenium import webdriver
     browser = request.config.getoption("--browser")
     if browser == 'chrome':
-        # driver = webdriver.Chrome("C:\\Users\\User\\Downloads\\chromedriver-win32\\chromedriver.exe")
+        option = webdriver.ChromeOptions()
+        option.add_experimental_option("useAutomationExtension", False)
+        option.add_experimental_option("excludeSwitches", ['enable-automation'])
         service_obj = Service("..\\Drivers\\chromedriver.exe")
-        driver = webdriver.Chrome(service=service_obj)
+        driver = webdriver.Chrome(service=service_obj, options=option)
     elif browser == 'firefox':
-        # driver = webdriver.Firefox("C:\\Users\\User\\Desktop\\Automation_Practice\\jqueryui\\Drivers\\geckodriver.exe")
         service_obj = Service("..\\Drivers\\geckodriver.exe")
         driver = webdriver.Firefox(service=service_obj)
     warnings.simplefilter('ignore', ResourceWarning)
-    #driver = webdriver.Chrome("C:\\Users\\admin\\PycharmProjects\\SegundoProyecto\\Drivers\\chromedriver.exe")
     driver.implicitly_wait(10)
     driver.maximize_window()
     request.cls.driver = driver
@@ -61,4 +61,4 @@ def pytest_runtest_makereport(item):
 
 def _capture_screenshot(name):
     #driver.get_screenshot_as_file(name)
-    driver.get_screenshot_as_file("..\\Test\\ScreenShots\\"+name)
+    driver.get_screenshot_as_file("..\\Test\\Reports\\" + name)
