@@ -1,36 +1,44 @@
 import time
+import os
 import warnings
-import json
 import pytest
-from Utils import utils as utils
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.chrome.service import Service
-driver = None
+from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from Utils import utils
+from allure_commons.types import AttachmentType
+import allure
+
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
 
 @pytest.fixture(scope="class")
 def test_setup(request):
-    global driver
-    from selenium import webdriver
     browser = request.config.getoption("--browser")
-    if browser == 'chrome':
-        option = webdriver.ChromeOptions()
-        option.add_experimental_option("useAutomationExtension", False)
-        option.add_experimental_option("excludeSwitches", ['enable-automation'])
-        service_obj = Service("..\\Drivers\\chromedriver.exe")
-        driver = webdriver.Chrome(service=service_obj, options=option)
-    elif browser == 'firefox':
-        service_obj = Service("..\\Drivers\\geckodriver.exe")
-        driver = webdriver.Firefox(service=service_obj)
+    driver = None
+
+    if browser == "chrome":
+        options = Options()
+        options.add_experimental_option("useAutomationExtension", False)
+        options.add_experimental_option("excludeSwitches", ['enable-automation'])
+        options.add_experimental_option("prefs", {
+            "credentials_enable_service": False,
+            "profile.password_manager_enabled": False
+        })
+        driver = webdriver.Chrome(options=options)
+
+    elif browser == "firefox":
+        options = FirefoxOptions()
+        driver = webdriver.Firefox(options=options)
+
     warnings.simplefilter('ignore', ResourceWarning)
     driver.implicitly_wait(10)
     driver.maximize_window()
-    request.cls.driver = driver
     driver.get(utils.URL)
+    request.cls.driver = driver
     yield
-    driver.close()
     driver.quit()
 
 
@@ -46,19 +54,30 @@ def pytest_runtest_makereport(item):
     report = outcome.get_result()
     extra = getattr(report, 'extra', [])
 
-    if report.when == 'call' or report.when == "setup":
-        extra.append(pytest_html.extras.url("https://www.automationexercise.com/"))
+    if report.when == 'call' or report.when == 'setup':
+        extra.append(pytest_html.extras.url("https://practicesoftwaretesting.com/"))
         xfail = hasattr(report, 'wasxfail')
         if (report.skipped and xfail) or (report.failed and not xfail):
-            file_name = report.nodeid.replace("::", "_") + ".png"
-            _capture_screenshot(file_name)
-            if file_name:
-                html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
-                       'onclick="window.open(this.src)" align="right"/></div>' % file_name
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")  # <-- ahora funciona
+            screenshot_name = f"{report.nodeid.replace('::', '_')}_{timestamp}.png"
+            screenshot_path = _capture_screenshot(item.cls.driver, screenshot_name)
+
+            # Adjunta a Allure
+            allure.attach(item.cls.driver.get_screenshot_as_png(),
+                          name="Screenshot",
+                          attachment_type=AttachmentType.PNG)
+
+            if screenshot_path:
+                html = f'<div><img src="{screenshot_path}" alt="screenshot" style="width:304px;height:228px;" ' \
+                       f'onclick="window.open(this.src)" align="right"/></div>'
                 extra.append(pytest_html.extras.html(html))
         report.extras = extra
 
 
-def _capture_screenshot(name):
+def _capture_screenshot(driver, name):
     #driver.get_screenshot_as_file(name)
-    driver.get_screenshot_as_file("..\\Test\\Reports\\" + name)
+    reports_path = os.path.join("..", "Test", "Reports")
+    os.makedirs(reports_path, exist_ok=True)
+    final_path = os.path.join(reports_path, name)
+    driver.get_screenshot_as_file(final_path)
+    return final_path

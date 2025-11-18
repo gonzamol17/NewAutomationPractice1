@@ -30,6 +30,7 @@ class TestCountAllProducts(BaseClass):
         lp = LoginPage(driver)
         self.driver.execute_script("window.scrollTo(0, 600)")
         lp.do_Login("gonzalo.molina@darwoft.com", "Maestruli10")
+        time.sleep(1)
         hp.select_Products()
         self.driver.execute_script("window.scrollTo(0, 600)")
         pp = ProductsPage(driver)
