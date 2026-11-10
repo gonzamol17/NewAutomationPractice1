@@ -1,14 +1,7 @@
 import time
 import pytest
-import unittest
 import sys
 import os
-
-from selenium.webdriver.common import alert
-from selenium.webdriver.common.alert import Alert
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
 
 from POM.CategoryWomenPage import CategoryWomenPage
 from POM.ContactUsPage import ContactUsPage
