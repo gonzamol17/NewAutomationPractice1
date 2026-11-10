@@ -7,7 +7,7 @@ class DataLoginUser:
 
         @staticmethod
         def getTestData(test_case_name):
-            book = openpyxl.load_workbook("C:\\Users\\User\\PycharmProjects\\NewAutomationPractice1\\Data\\Libro1.xlsx")
+            book = openpyxl.load_workbook("C:\\Users\\gonza\\PycharmProjects\\NewAutomationPractice1\\Data\\Libro1.xlsx")
             sheet = book.active
             Dict= {}
             for i in range(1, sheet.max_row + 1):

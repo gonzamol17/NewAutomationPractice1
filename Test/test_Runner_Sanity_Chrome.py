@@ -1,6 +1,8 @@
 import unittest
 from unittest import TestLoader, TestSuite, TextTestRunner
-
+# Evitar que Pytest recopile estas clases auxiliares
+TestLoader.__test__ = False
+TestSuite.__test__ = False
 import Test
 from Test.test_Verify_Login_Success import TestLoginSuccess
 from Test.test_Verify_FooterComponent import TestFooterComponent

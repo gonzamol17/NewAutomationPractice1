@@ -18,7 +18,7 @@ from POM.HomePage import HomePage
 from POM.LoginPage import LoginPage
 from Utils.BaseClass import BaseClass
 
-
+@pytest.mark.report
 class TestCountAllProducts(BaseClass):
 
     def test_CountAll_Products(self):

@@ -1,0 +1,5 @@
+2026-11-10 18:19:54,427 :INFO : test_Write_Your_Review :Se ingresa email y password
+2026-11-10 18:20:17,832 :INFO : test_Write_Your_Review :Se ingresa email y password
+2026-11-10 18:26:23,612 :INFO : test_Verify_Read_Information_From_Excel :Se hace click en link signIn
+2026-11-10 18:26:26,982 :INFO : test_Verify_Read_Information_From_Excel :Se ingresa email y password
+2026-11-10 18:26:29,473 :INFO : test_Verify_Read_Information_From_Excel :El usuario está logueado
